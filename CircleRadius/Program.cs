@@ -4,16 +4,16 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Введите длину стороны квадрата (a):");
+        Console.Write("Введите длину стороны квадрата (a): ");
         double a = double.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите число секторов в r3:");
+        Console.Write("Введите число секторов в r3: ");
         double b = double.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите число секторов в r2:");
+        Console.Write("Введите число секторов в r2: ");
         double c = double.Parse(Console.ReadLine());
 
-        Console.WriteLine("Введите число секторов в r1:");
+        Console.Write("Введите число секторов в r1: ");
         double d = double.Parse(Console.ReadLine());
 
 
@@ -58,5 +58,7 @@ class Program
 
         //Вывод суммы всей площади фигуры
         Console.WriteLine("Площадь всей закрашенной фигуры: " + allSumFigure);
+
+        Console.WriteLine("Оранжевая часть " + (squareArea - circleArea) / 8);
     }
 }
