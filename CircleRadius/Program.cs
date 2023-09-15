@@ -58,7 +58,5 @@ class Program
 
         //Вывод суммы всей площади фигуры
         Console.WriteLine("Площадь всей закрашенной фигуры: " + allSumFigure);
-
-        Console.WriteLine("Оранжевая часть " + (squareArea - circleArea) / 8);
     }
 }
