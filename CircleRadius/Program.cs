@@ -7,6 +7,9 @@ class Program
         Console.Write("Введите длину стороны квадрата (a): ");
         double a = double.Parse(Console.ReadLine());
 
+        Console.Write("Введите кол-во закрашенных секторов за фигурой (k): ");
+        double k = double.Parse(Console.ReadLine());
+
         Console.Write("Введите число секторов в r3: ");
         double b = double.Parse(Console.ReadLine());
 
@@ -30,7 +33,7 @@ class Program
         double squareArea = a * a;
 
         // Вычисляем площадь большой вписанной окружности
-        double circleArea = Math.PI * r3 * r3; // 78.5
+        double circleArea = Math.PI * r3 * r3;              // 78.5
 
         // Вычисляем площадь большого сектора
         double firstSectorArea = circleArea / 8.0;
@@ -40,15 +43,17 @@ class Program
         double secondSectorArea = (Math.PI * r2 * r2) / 8.0; // 3.5
 
         //Вычисляем площадь большого сектора r3
-        double firstSSectorArea = firstSectorArea - secondSectorArea;
+        double firstSSectorArea = firstSectorArea - secondSectorArea; // 6.28
 
         //Вычисление площади маленького сектора  r1
-        double lastSectorArea  = (Math.PI * r1 * r1) / 8.0; // 0.39
+        double lastSectorArea = (Math.PI * r1 * r1) / 8.0; // 0.39
 
-        // Вычисляем площадь закрешенной фигуры за окружностью
-        double shadedArea = ((squareArea - circleArea) / 2 + (squareArea - circleArea) / 4); // (squareArea - circleArea) / 2 - четрые закрашенных мини сектора из 8, а (squareArea - circleArea) / 4 - два закрашенных сектора из 8
+        //Вычисляем площадь отдельного внешнего сектора
+        double exShadedArea = (squareArea - circleArea) / 8;
 
-        
+        //Вычисляем площадь внешних секторов фигуры
+        double sumExShadedArea = (exShadedArea * k);
+
         // Вычисляем площадь секторов в r3
         double SectorAreaR3 = firstSSectorArea * b;
 
@@ -62,12 +67,13 @@ class Program
         double sumSectorArea = SectorAreaR1 + SectorAreaR2 + SectorAreaR3;
 
         //Площадь всей закрашенной фигуры
-        double allSumFigure = shadedArea + sumSectorArea;
-        // Вычисляем площадь первого радиуса
-        Console.WriteLine("Площадь заштрихованной фигуры: " + shadedArea);
+        double allSumFigure = sumExShadedArea + sumSectorArea;
 
         //Вывод площади одного из секторов
         Console.WriteLine("Площадь одного из восьми секторов: " + firstSectorArea);
+
+        //Площадь маленького внешнего сектора
+        Console.WriteLine("Площадь внешних секторов: " + sumExShadedArea);
 
         //Вывод площади секторов, которые указаны в задаче
         Console.WriteLine("Площадь секторов: " + sumSectorArea);
